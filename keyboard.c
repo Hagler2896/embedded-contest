@@ -8,28 +8,84 @@
 #include <sys/ioctl.h> 
 #include <sys/types.h> 
 
-
-struct param1
+struct point1
 {
-    int a;
-    int b;
-    int c;
+    int row;
+    int col;
+};
+
+struct point2
+{
+    int row;
+    int col;
+};
+
+struct homography
+{
+    struct point1 point1;
+    struct point2 point2;
+};
+
+struct threshhold
+{
 
 };
 
-struct param2
+struct line_tracking
 {
-    int a;
-    int b;
-    int c;
+    struct homography homo;
+    struct threshhold threshhold;
 
+};
+
+struct sudden_sign
+{
+    int h;
+    int s;
+    int v;
+
+};
+
+struct traffic_red
+{
+    int h;
+    int s;
+    int v;
+};
+
+struct traffic_yellow
+{
+    int h;
+    int s;
+    int v;
+};
+
+struct traffic_green
+{
+    int h;
+    int s;
+    int v;
+};
+
+struct traffic_light
+{
+    struct traffic_red red;
+    struct traffic_yellow yellwo;
+    struct traffic_green green;
+};
+
+struct camera_servo_angle
+{
+    int x;
+    int y;
 };
 
 struct param
 {
-    struct param1 pr1;
-    struct param2 pr2;
-
+    struct line_tracking line;
+    struct sudden_sign sudden;
+    struct traffic_light traffic;
+    struct camera_servo_angle camera;
 };
 
 
@@ -140,18 +196,18 @@ int main(void)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("value : %d\n",pr.pr1.a);
+                            //printf("value : %d\n",pr.pr1.a);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.pr1.a++;
+                                //pr.pr1.a++;
                                 printf("Param1-1 UP\n");
                             }
 
                             else if(ch == 66)
                             {
-                                pr.pr1.a--;
+                                //pr.pr1.a--;
                                 printf("Param1-1 DOWN\n");
                             }
                         }
@@ -162,18 +218,18 @@ int main(void)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("value : %d\n",pr.pr1.b);
+                            //printf("value : %d\n",pr.pr1.b);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.pr1.b++;
+                                //pr.pr1.b++;
                                 printf("Param1-2 UP\n");
                             }
 
                             else if(ch == 66)
                             {
-                                pr.pr1.b--;
+                                //pr.pr1.b--;
                                 printf("Param1-2 DOWN\n");
                             }
                         }
@@ -185,18 +241,18 @@ int main(void)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("value : %d\n",pr.pr1.c);
+                            //printf("value : %d\n",pr.pr1.c);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.pr1.c++;
+                                //pr.pr1.c++;
                                 printf("Param1-3 UP\n");
                             }
 
                             else if(ch == 66)
                             {
-                                pr.pr1.c--;
+                                //pr.pr1.c--;
                                 printf("Param1-3 DOWN\n");
                             }
                         }
@@ -208,18 +264,18 @@ int main(void)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("value : %d\n",pr.pr2.a);
+                            //printf("value : %d\n",pr.pr2.a);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.pr2.a++;
+                                //pr.pr2.a++;
                                 printf("Param2-1 UP\n");
                             }
 
                             else if(ch == 66)
                             {
-                                pr.pr2.a--;
+                                //pr.pr2.a--;
                                 printf("Param2-1 DOWN\n");
                             }
                         }
@@ -231,18 +287,18 @@ int main(void)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("value : %d\n",pr.pr2.b);
+                            //printf("value : %d\n",pr.pr2.b);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.pr2.b++;
+                                //pr.pr2.b++;
                                 printf("Param2-2 UP\n");
                             }
 
                             else if(ch == 66)
                             {
-                                pr.pr2.b--;
+                                //pr.pr2.b--;
                                 printf("Param2-2 DOWN\n");
                             }
                         }
@@ -253,18 +309,18 @@ int main(void)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("value : %d\n",pr.pr2.c);
+                            //printf("value : %d\n",pr.pr2.c);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.pr2.c++;
+                                //pr.pr2.c++;
                                 printf("Param2-3 UP\n");
                             }
 
                             else if(ch == 66)
                             {
-                                pr.pr2.c--;
+                                //pr.pr2.c--;
                                 printf("Param2-3 DOWN\n");
                             }
                         }
