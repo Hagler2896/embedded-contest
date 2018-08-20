@@ -8,6 +8,7 @@
 #include <sys/ioctl.h> 
 #include <sys/types.h> 
 
+// ---------------------------------------- parameter 구조체 정의 -------------------------
 struct point1
 {
     int row;
@@ -28,6 +29,7 @@ struct homography
 
 struct threshhold
 {
+    int threshhold;
 
 };
 
@@ -117,17 +119,18 @@ int getch(void)
 int main(void)  
 {  
     int ch,ch1;  
-    int path1,path2;
-    struct param pr = {{10,20,30},{40,50,60}};
+    int path1,path2,path3;
+    struct param pr = {{{ {10,20}, {11,22} } , {30} },{40,50,60}, { {70,80,90} , {10,20,30}, {10,20,30} }, {8,9} };
     while(1){  
         system("clear");
         gotoxy(3,0);
-        printf("1. param1");
+        printf("1. line_tracking");
         gotoxy(3,2);
-        printf("2. param2");
+        printf("2. sudden_sign");
         gotoxy(3,3);
-        printf("3. param3");
+        printf("3. traffic_light");
         gotoxy(3,4);
+        printf("4. camera_servo_angle");
         ch = getch();  // 상 65 하 66
         //printf("%d", ch);  
 
@@ -141,45 +144,76 @@ int main(void)
         {
             path1 = 2;
         }
+
+        else if (ch == 51)  // 3번 파라미터 선택택
+        {
+            path1 = 3;
+        }
+
+        else if (ch == 52)  // 4번 파라미터 선택택
+        {
+            path1 = 4;
+        }
+
+        else if(ch == 113)  // 종료
+        {
+            printf("\n");
+            return 0; 
+        }
             while(1)
             {
                 if(path1 == 1)
                 {
                     system("clear");
                     gotoxy(3,0);
-                    printf("1. 1-1");
+                    printf("1. Homography");
                     gotoxy(3,2);
-                    printf("2. 1-2");
-                    gotoxy(3,3);
-                    printf("3. 1-3");
-
+                    printf("2. ThreshHold");
                 }
 
                 else if(path1 == 2)
                 {
                     system("clear");
                     gotoxy(3,0);
-                    printf("1. 2-1");
+                    printf("1. h");
                     gotoxy(3,2);
-                    printf("2. 2-2");
+                    printf("2. s");
                     gotoxy(3,3);
-                    printf("3. 2-3");
-
+                    printf("3. v");
                 }
 
-                ch = getch();  // 1번 파라미터의 세부 파라미터 선택
+                else if(path1 == 3)
+                {
+                    system("clear");
+                    gotoxy(3,0);
+                    printf("1. traffic_red");
+                    gotoxy(3,2);
+                    printf("2. traffic_yellow");
+                    gotoxy(3,3);
+                    printf("3. traffic_green");
+                }
 
-                if(ch == 49)    // 1-1번 파라미터 선택
+                else if(path1 == 4)
+                {
+                    system("clear");
+                    gotoxy(3,0);
+                    printf("1. x");
+                    gotoxy(3,2);
+                    printf("2. y");
+                }
+                ch = getch();  // 두번째 파라미터 선택
+
+                if(ch == 49)   
                 {
                     path2 = 1;
                 }
 
-                else if(ch == 50)   // 1-2번 파라미터 선택
+                else if(ch == 50)  
                 {
                     path2 = 2;
                 }
 
-                else if(ch == 51)   // 1-3번 파라미터 선택
+                else if(ch == 51)   
                 {
                     path2 = 3;
                 }
@@ -192,141 +226,250 @@ int main(void)
                     {
                         if(path1 == 1 &&path2 == 1) // 1-1번 파라미터를 선택했을때
                         {
+                            label:
                             system("clear");
                             gotoxy(3,0);
-                            printf("UP / DOWN\n");
+                            printf("1. point1");
                             gotoxy(3,2);
-                            //printf("value : %d\n",pr.pr1.a);
-                            gotoxy(3,3);
+                            printf("2. point2");
 
-                            if(ch == 65)
+                            ch = getch();
+
+                            if(ch == 113)
                             {
-                                //pr.pr1.a++;
-                                printf("Param1-1 UP\n");
+                                break;
                             }
-
-                            else if(ch == 66)
+                            while(1)
                             {
-                                //pr.pr1.a--;
-                                printf("Param1-1 DOWN\n");
+                                if(ch == 49)
+                                {
+                                    system("clear");
+                                    gotoxy(3,0);
+                                    printf("1. Point1_row");
+                                    gotoxy(3,2);
+                                    printf("2. Point1_col");
+                                }
+
+                                else if(ch == 50)
+                                {
+                                    system("clear");
+                                    gotoxy(3,0);
+                                    printf("1. Point2_row");
+                                    gotoxy(3,2);
+                                    printf("2. Point2_col");
+                                }
+
+                                ch = getch();
+
+                                if(ch == 113)
+                                {
+                                    goto label;
+                                    //break;
+                                }
                             }
                         }
-
                         else if(path1 == 1 &&path2 == 2) // 1-2번 파라미터를 선택했을때
                         {
                             system("clear");
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            //printf("value : %d\n",pr.pr1.b);
+                            printf("ThreshHold_value : %d\n",pr.line.threshhold.threshhold);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                //pr.pr1.b++;
-                                printf("Param1-2 UP\n");
+                                pr.line.threshhold.threshhold++;
+                                printf("UP");
+                                gotoxy(3,2);
+                                printf("ThreshHold_value : %d\n",pr.line.threshhold.threshhold);
                             }
 
                             else if(ch == 66)
                             {
-                                //pr.pr1.b--;
-                                printf("Param1-2 DOWN\n");
+                                pr.line.threshhold.threshhold--;
+                                printf("DOWN");
+                                gotoxy(3,2);
+                                printf("ThreshHold_value : %d\n",pr.line.threshhold.threshhold);
                             }
                         }
 
-
-                        else if(path1 == 1 &&path2 == 3) // 1-3번 파라미터를 선택했을때
+                        else if(path1 == 2 &&path2 == 1)
                         {
                             system("clear");
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            //printf("value : %d\n",pr.pr1.c);
+                            printf("H : %d\n",pr.sudden.h);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                //pr.pr1.c++;
-                                printf("Param1-3 UP\n");
+                                pr.sudden.h++;
+                                printf("UP\n");
+                                gotoxy(3,2);
+                                printf("value : %d\n",pr.sudden.h);
                             }
 
                             else if(ch == 66)
                             {
-                                //pr.pr1.c--;
-                                printf("Param1-3 DOWN\n");
+                                pr.sudden.h--;
+                                printf("DOWN\n");
+                                gotoxy(3,2);
+                                printf("value : %d\n",pr.sudden.h);
                             }
                         }
 
-
-                        else if(path1 == 2 &&path2 == 1) // 2-1번 파라미터를 선택했을때
+                        else if(path1 == 2 &&path2 == 2)
                         {
                             system("clear");
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            //printf("value : %d\n",pr.pr2.a);
+                            printf("S : %d\n",pr.sudden.s);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                //pr.pr2.a++;
-                                printf("Param2-1 UP\n");
+                                pr.sudden.s++;
+                                printf("UP\n");
+                                gotoxy(3,2);
+                                printf("value : %d\n",pr.sudden.s);
                             }
 
                             else if(ch == 66)
                             {
-                                //pr.pr2.a--;
-                                printf("Param2-1 DOWN\n");
+                                pr.sudden.s--;
+                                printf("DOWN\n");
+                                gotoxy(3,2);
+                                printf("value : %d\n",pr.sudden.s);
                             }
                         }
 
-
-                        else if(path1 == 2 &&path2 == 2) // 2-2번 파라미터를 선택했을때
+                        else if(path1 == 2 &&path2 == 3)
                         {
                             system("clear");
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            //printf("value : %d\n",pr.pr2.b);
+                            printf("V : %d\n",pr.sudden.v);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                //pr.pr2.b++;
-                                printf("Param2-2 UP\n");
+                                pr.sudden.v++;
+                                printf("UP\n");
+                                gotoxy(3,2);
+                                printf("value : %d\n",pr.sudden.v);
                             }
 
                             else if(ch == 66)
                             {
-                                //pr.pr2.b--;
-                                printf("Param2-2 DOWN\n");
+                                pr.sudden.v--;
+                                printf("DOWN\n");
+                                gotoxy(3,2);
+                                printf("value : %d\n",pr.sudden.v);
                             }
                         }
 
-                        else if(path1 == 2 &&path2 == 3) // 2-3번 파라미터를 선택했을때
+                        else if(path1 == 3 &&path2 == 1)
+                        {
+                            system("clear");
+                            gotoxy(3,0);
+                            printf("1. H");
+                            gotoxy(3,2);
+                            printf("2. S");
+                            gotoxy(3,3);
+                            printf("3. V");
+                        }
+
+                        else if(path1 == 3 &&path2 == 2)
+                        {
+                            system("clear");
+                            gotoxy(3,0);
+                            printf("1. H");
+                            gotoxy(3,2);
+                            printf("2. S");
+                            gotoxy(3,3);
+                            printf("3. V");
+                        }
+
+                        else if(path1 == 3 &&path2 == 3)
+                        {
+                            system("clear");
+                            gotoxy(3,0);
+                            printf("1. H");
+                            gotoxy(3,2);
+                            printf("2. S");
+                            gotoxy(3,3);
+                            printf("3. V");
+                        }
+                
+                        else if(path1 == 4 &&path2 == 1)
                         {
                             system("clear");
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            //printf("value : %d\n",pr.pr2.c);
+                            printf("camera_sevo_X : %d\n",pr.camera.x);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                //pr.pr2.c++;
-                                printf("Param2-3 UP\n");
+                                pr.camera.x++;
+                                printf("UP\n");
+                                gotoxy(3,2);
+                                printf("camera_sevo_X : %d\n",pr.camera.x);
                             }
 
                             else if(ch == 66)
                             {
-                                //pr.pr2.c--;
-                                printf("Param2-3 DOWN\n");
+                                pr.camera.x--;
+                                printf("DOWN\n");
+                                gotoxy(3,2);
+                                printf("camera_sevo_X : %d\n",pr.camera.x);
+                            }
+                        }
+
+                        else if(path1 == 4 &&path2 == 2)
+                        {
+                            system("clear");
+                            gotoxy(3,0);
+                            printf("UP / DOWN\n");
+                            gotoxy(3,2);
+                            printf("camera_servo_Y : %d\n",pr.camera.y);
+                            gotoxy(3,3);
+
+                            if(ch == 65)
+                            {
+                                pr.camera.y++;
+                                printf("UP\n");
+                                gotoxy(3,2);
+                                printf("camera_servo_Y : %d\n",pr.camera.y);
+                            }
+
+                            else if(ch == 66)
+                            {
+                                pr.camera.y--;
+                                printf("DOWN\n");
+                                gotoxy(3,2);
+                                printf("camera_servo_Y : %d\n",pr.camera.y);
                             }
                         }
 
                         ch = getch();
-                        if(ch == 113)
+
+                        if (ch == 49)
+                        {
+                            path3 = 1;
+                        }
+
+                        else if (ch == 50)
+                        {
+                            path3 = 2;
+                        }
+
+                        else if(ch == 113)
                         {
                             break;
                         }
