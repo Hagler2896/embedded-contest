@@ -241,25 +241,174 @@ int main(void)
                             }
                             while(1)
                             {
+                                
                                 if(ch == 49)
                                 {
+                                    point1:
                                     system("clear");
                                     gotoxy(3,0);
                                     printf("1. Point1_row");
                                     gotoxy(3,2);
                                     printf("2. Point1_col");
+                                    path3 = 1;
                                 }
 
                                 else if(ch == 50)
                                 {
+                                    point2:
                                     system("clear");
                                     gotoxy(3,0);
                                     printf("1. Point2_row");
                                     gotoxy(3,2);
                                     printf("2. Point2_col");
+                                    path3 = 2;
                                 }
 
                                 ch = getch();
+                                
+                                if(ch == 49 && path1 == 1 && path2 == 1 && path3 == 1)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("Point1_row : %d\n",pr.line.homo.point1.row);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto point1;
+                                        }
+
+                                        else if(ch == 65)
+                                        {
+                                            pr.line.homo.point1.row++;
+                                            printf("UP");
+                                            gotoxy(3,2);
+                                            printf("Point1_row : %d\n",pr.line.homo.point1.row);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.line.homo.point1.row--;
+                                            printf("DOWN");
+                                            gotoxy(3,2);
+                                            printf("Point1_row : %d\n",pr.line.homo.point1.row);
+                                        }
+                                    }
+                                }
+
+                                else if(ch == 50 && path1 == 1 && path2 == 1 && path3 == 1)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("Point1_col : %d\n",pr.line.homo.point1.col);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto point1;
+                                        }
+
+                                        else if(ch == 65)
+                                        {
+                                            pr.line.homo.point1.col++;
+                                            printf("UP");
+                                            gotoxy(3,2);
+                                            printf("Point1_col : %d\n",pr.line.homo.point1.col);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.line.homo.point1.col--;
+                                            printf("DOWN");
+                                            gotoxy(3,2);
+                                            printf("Point1_col : %d\n",pr.line.homo.point1.col);
+                                        }
+                                    }
+                                }
+                    
+                                else if(ch == 49 && path1 == 1 && path2 == 1 && path3 == 2)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("Point2_row : %d\n",pr.line.homo.point2.row);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto point2;
+                                        }
+
+                                        else if(ch == 65)
+                                        {
+                                            pr.line.homo.point2.row++;
+                                            printf("UP");
+                                            gotoxy(3,2);
+                                            printf("Point2_row : %d\n",pr.line.homo.point2.row);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.line.homo.point2.row--;
+                                            printf("DOWN");
+                                            gotoxy(3,2);
+                                            printf("Point2_row : %d\n",pr.line.homo.point2.row);
+                                        }
+                                    }
+                                }
+                                
+                                else if(ch == 50 && path1 == 1 && path2 == 1 && path3 == 2)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("Point2_col : %d\n",pr.line.homo.point2.col);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto point2;
+                                        }
+
+                                        else if(ch == 65)
+                                        {
+                                            pr.line.homo.point2.col++;
+                                            printf("UP");
+                                            gotoxy(3,2);
+                                            printf("Point2_col : %d\n",pr.line.homo.point2.col);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.line.homo.point2.col--;
+                                            printf("DOWN");
+                                            gotoxy(3,2);
+                                            printf("Point2_col : %d\n",pr.line.homo.point2.col);
+                                        }
+                                    }
+                                }
 
                                 if(ch == 113)
                                 {
