@@ -72,7 +72,7 @@ struct traffic_green
 struct traffic_light
 {
     struct traffic_red red;
-    struct traffic_yellow yellwo;
+    struct traffic_yellow yellow;
     struct traffic_green green;
 };
 
@@ -120,7 +120,7 @@ int main(void)
 {  
     int ch,ch1;  
     int path1,path2,path3;
-    struct param pr = {{{ {10,20}, {11,22} } , {30} },{40,50,60}, { {70,80,90} , {10,20,30}, {10,20,30} }, {8,9} };
+    struct param pr = {{{ {10,20}, {11,22} } , {30} },{40,50,60}, { {70,80,90} , {10,20,30}, {1,2,3} }, {8,9} };
     while(1){  
         system("clear");
         gotoxy(3,0);
@@ -523,35 +523,368 @@ int main(void)
 
                         else if(path1 == 3 &&path2 == 1)
                         {
-                            system("clear");
-                            gotoxy(3,0);
-                            printf("1. H");
-                            gotoxy(3,2);
-                            printf("2. S");
-                            gotoxy(3,3);
-                            printf("3. V");
+                                traffic_red:
+                                system("clear");
+                                gotoxy(3,0);
+                                printf("1. traffic_red_H");
+                                gotoxy(3,2);
+                                printf("2. traffic_red_S");
+                                gotoxy(3,3);
+                                printf("3. traffic_red_V");
+
+                                ch = getch();
+
+                                if(ch == 49)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("traffic_red_H : %d\n",pr.traffic.red.h);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto traffic_red;
+                                        }
+                                        
+                                        else if(ch == 65)
+                                        {
+                                            pr.traffic.red.h++;
+                                            printf("UP\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_red_H : %d\n",pr.traffic.red.h);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.traffic.red.h--;
+                                            printf("DOWN\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_red_H : %d\n",pr.traffic.red.h);
+                                        }
+                                    }
+                                }
+
+                                else if(ch == 50)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("traffic_red_S : %d\n",pr.traffic.red.s);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto traffic_red;
+                                        }
+                                        
+                                        else if(ch == 65)
+                                        {
+                                            pr.traffic.red.s++;
+                                            printf("UP\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_red_S : %d\n",pr.traffic.red.s);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.traffic.red.s--;
+                                            printf("DOWN\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_red_S : %d\n",pr.traffic.red.s);
+                                        }
+                                    }
+                                }
+
+                                else if(ch == 51)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("traffic_red_V : %d\n",pr.traffic.red.v);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto traffic_red;
+                                        }
+                                        
+                                        else if(ch == 65)
+                                        {
+                                            pr.traffic.red.v++;
+                                            printf("UP\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_red_V : %d\n",pr.traffic.red.v);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.traffic.red.v--;
+                                            printf("DOWN\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_red_V : %d\n",pr.traffic.red.v);
+                                        }
+                                    }
+                                }
                         }
 
                         else if(path1 == 3 &&path2 == 2)
                         {
-                            system("clear");
-                            gotoxy(3,0);
-                            printf("1. H");
-                            gotoxy(3,2);
-                            printf("2. S");
-                            gotoxy(3,3);
-                            printf("3. V");
+                                traffic_yellow:
+                                system("clear");
+                                gotoxy(3,0);
+                                printf("1. traffic_yellow_H");
+                                gotoxy(3,2);
+                                printf("2. traffic_yellow_S");
+                                gotoxy(3,3);
+                                printf("3. traffic_yellow_V");
+
+                                ch = getch();
+
+                                if(ch == 49)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("traffic_yellow_H : %d\n",pr.traffic.yellow.h);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto traffic_yellow;
+                                        }
+                                        
+                                        else if(ch == 65)
+                                        {
+                                            pr.traffic.yellow.h++;
+                                            printf("UP\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_yellow_H : %d\n",pr.traffic.yellow.h);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.traffic.yellow.h--;
+                                            printf("DOWN\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_yellow_H : %d\n",pr.traffic.yellow.h);
+                                        }
+                                    }
+                                }
+
+                                else if(ch == 50)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("traffic_yellow_S : %d\n",pr.traffic.yellow.s);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto traffic_yellow;
+                                        }
+                                        
+                                        else if(ch == 65)
+                                        {
+                                            pr.traffic.yellow.s++;
+                                            printf("UP\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_yellow_S : %d\n",pr.traffic.yellow.s);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.traffic.yellow.s--;
+                                            printf("DOWN\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_yellow_S : %d\n",pr.traffic.yellow.s);
+                                        }
+                                    }
+                                }
+
+                                else if(ch == 51)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("traffic_yellow_V : %d\n",pr.traffic.yellow.v);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto traffic_yellow;
+                                        }
+                                        
+                                        else if(ch == 65)
+                                        {
+                                            pr.traffic.yellow.v++;
+                                            printf("UP\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_yellow_V : %d\n",pr.traffic.yellow.v);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.traffic.yellow.v--;
+                                            printf("DOWN\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_yellow_V : %d\n",pr.traffic.yellow.v);
+                                        }
+                                    }
+                                }
                         }
 
-                        else if(path1 == 3 &&path2 == 3)
+                        else if(path1 == 3 &&path2 == 3)        // traffic_green
                         {
-                            system("clear");
-                            gotoxy(3,0);
-                            printf("1. H");
-                            gotoxy(3,2);
-                            printf("2. S");
-                            gotoxy(3,3);
-                            printf("3. V");
+                                traffic_green:
+                                system("clear");
+                                gotoxy(3,0);
+                                printf("1. traffic_green_H");
+                                gotoxy(3,2);
+                                printf("2. traffic_green_S");
+                                gotoxy(3,3);
+                                printf("3. traffic_green_V");
+
+                                ch = getch();
+
+                                if(ch == 49)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("traffic_green_H : %d\n",pr.traffic.green.h);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto traffic_green;
+                                        }
+                                        
+                                        else if(ch == 65)
+                                        {
+                                            pr.traffic.green.h++;
+                                            printf("UP\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_green_H : %d\n",pr.traffic.green.h);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.traffic.green.h--;
+                                            printf("DOWN\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_green_H : %d\n",pr.traffic.green.h);
+                                        }
+                                    }
+                                }
+
+                                else if(ch == 50)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("traffic_green_S : %d\n",pr.traffic.green.s);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto traffic_green;
+                                        }
+                                        
+                                        else if(ch == 65)
+                                        {
+                                            pr.traffic.green.s++;
+                                            printf("UP\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_green_S : %d\n",pr.traffic.green.s);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.traffic.green.s--;
+                                            printf("DOWN\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_green_S : %d\n",pr.traffic.green.s);
+                                        }
+                                    }
+                                }
+
+                                else if(ch == 51)
+                                {
+                                    while(1)
+                                    {
+                                        system("clear");
+                                        gotoxy(3,0);
+                                        printf("UP / DOWN\n");
+                                        gotoxy(3,2);
+                                        printf("traffic_green_V : %d\n",pr.traffic.green.v);
+                                        gotoxy(3,3);
+
+                                        ch = getch();
+
+                                        if(ch == 113)
+                                        {
+                                            goto traffic_green;
+                                        }
+                                        
+                                        else if(ch == 65)
+                                        {
+                                            pr.traffic.green.v++;
+                                            printf("UP\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_green_V : %d\n",pr.traffic.green.v);
+                                        }
+
+                                        else if(ch == 66)
+                                        {
+                                            pr.traffic.green.v--;
+                                            printf("DOWN\n");
+                                            gotoxy(3,2);
+                                            printf("traffic_green_V : %d\n",pr.traffic.green.v);
+                                        }
+                                    }
+                                }
                         }
                 
                         else if(path1 == 4 &&path2 == 1)
