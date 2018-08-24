@@ -103,7 +103,7 @@ void gotoxy(int x, int y) {
 
 }
 
-void func(struct param pr);
+void func(struct param* pr);
 
 
 int getch(void)  
@@ -126,12 +126,12 @@ int getch(void)
 int main(void)  
 {  
     struct param pr = {{{ {10,20}, {11,22} } , {30} },{40,50,60}, { {70,80,90} , {10,20,30}, {1,2,3} }, {8,9} };
-    func(pr);
+    func(&pr);
     return 0;  
 }  
 
 
-void func(struct param pr)
+void func(struct param* pr)
 {
         while(1){  
         system("clear");
@@ -286,7 +286,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("Point1_row : %d\n",pr.line.homo.point1.row);
+                                        printf("Point1_row : %d\n",pr->line.homo.point1.row);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -298,18 +298,18 @@ void func(struct param pr)
 
                                         else if(ch == 65)
                                         {
-                                            pr.line.homo.point1.row++;
+                                            pr->line.homo.point1.row++;
                                             printf("UP");
                                             gotoxy(3,2);
-                                            printf("Point1_row : %d\n",pr.line.homo.point1.row);
+                                            printf("Point1_row : %d\n",pr->line.homo.point1.row);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.line.homo.point1.row--;
+                                            pr->line.homo.point1.row--;
                                             printf("DOWN");
                                             gotoxy(3,2);
-                                            printf("Point1_row : %d\n",pr.line.homo.point1.row);
+                                            printf("Point1_row : %d\n",pr->line.homo.point1.row);
                                         }
                                     }
                                 }
@@ -322,7 +322,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("Point1_col : %d\n",pr.line.homo.point1.col);
+                                        printf("Point1_col : %d\n",pr->line.homo.point1.col);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -334,18 +334,18 @@ void func(struct param pr)
 
                                         else if(ch == 65)
                                         {
-                                            pr.line.homo.point1.col++;
+                                            pr->line.homo.point1.col++;
                                             printf("UP");
                                             gotoxy(3,2);
-                                            printf("Point1_col : %d\n",pr.line.homo.point1.col);
+                                            printf("Point1_col : %d\n",pr->line.homo.point1.col);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.line.homo.point1.col--;
+                                            pr->line.homo.point1.col--;
                                             printf("DOWN");
                                             gotoxy(3,2);
-                                            printf("Point1_col : %d\n",pr.line.homo.point1.col);
+                                            printf("Point1_col : %d\n",pr->line.homo.point1.col);
                                         }
                                     }
                                 }
@@ -358,7 +358,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("Point2_row : %d\n",pr.line.homo.point2.row);
+                                        printf("Point2_row : %d\n",pr->line.homo.point2.row);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -370,18 +370,18 @@ void func(struct param pr)
 
                                         else if(ch == 65)
                                         {
-                                            pr.line.homo.point2.row++;
+                                            pr->line.homo.point2.row++;
                                             printf("UP");
                                             gotoxy(3,2);
-                                            printf("Point2_row : %d\n",pr.line.homo.point2.row);
+                                            printf("Point2_row : %d\n",pr->line.homo.point2.row);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.line.homo.point2.row--;
+                                            pr->line.homo.point2.row--;
                                             printf("DOWN");
                                             gotoxy(3,2);
-                                            printf("Point2_row : %d\n",pr.line.homo.point2.row);
+                                            printf("Point2_row : %d\n",pr->line.homo.point2.row);
                                         }
                                     }
                                 }
@@ -394,7 +394,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("Point2_col : %d\n",pr.line.homo.point2.col);
+                                        printf("Point2_col : %d\n",pr->line.homo.point2.col);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -406,18 +406,18 @@ void func(struct param pr)
 
                                         else if(ch == 65)
                                         {
-                                            pr.line.homo.point2.col++;
+                                            pr->line.homo.point2.col++;
                                             printf("UP");
                                             gotoxy(3,2);
-                                            printf("Point2_col : %d\n",pr.line.homo.point2.col);
+                                            printf("Point2_col : %d\n",pr->line.homo.point2.col);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.line.homo.point2.col--;
+                                            pr->line.homo.point2.col--;
                                             printf("DOWN");
                                             gotoxy(3,2);
-                                            printf("Point2_col : %d\n",pr.line.homo.point2.col);
+                                            printf("Point2_col : %d\n",pr->line.homo.point2.col);
                                         }
                                     }
                                 }
@@ -435,23 +435,23 @@ void func(struct param pr)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("ThreshHold_value : %d\n",pr.line.threshhold.threshhold);
+                            printf("ThreshHold_value : %d\n",pr->line.threshhold.threshhold);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.line.threshhold.threshhold++;
+                                pr->line.threshhold.threshhold++;
                                 printf("UP");
                                 gotoxy(3,2);
-                                printf("ThreshHold_value : %d\n",pr.line.threshhold.threshhold);
+                                printf("ThreshHold_value : %d\n",pr->line.threshhold.threshhold);
                             }
 
                             else if(ch == 66)
                             {
-                                pr.line.threshhold.threshhold--;
+                                pr->line.threshhold.threshhold--;
                                 printf("DOWN");
                                 gotoxy(3,2);
-                                printf("ThreshHold_value : %d\n",pr.line.threshhold.threshhold);
+                                printf("ThreshHold_value : %d\n",pr->line.threshhold.threshhold);
                             }
                         }
 
@@ -461,23 +461,23 @@ void func(struct param pr)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("H : %d\n",pr.sudden.h);
+                            printf("H : %d\n",pr->sudden.h);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.sudden.h++;
+                                pr->sudden.h++;
                                 printf("UP\n");
                                 gotoxy(3,2);
-                                printf("value : %d\n",pr.sudden.h);
+                                printf("value : %d\n",pr->sudden.h);
                             }
 
                             else if(ch == 66)
                             {
-                                pr.sudden.h--;
+                                pr->sudden.h--;
                                 printf("DOWN\n");
                                 gotoxy(3,2);
-                                printf("value : %d\n",pr.sudden.h);
+                                printf("value : %d\n",pr->sudden.h);
                             }
                         }
 
@@ -487,23 +487,23 @@ void func(struct param pr)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("S : %d\n",pr.sudden.s);
+                            printf("S : %d\n",pr->sudden.s);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.sudden.s++;
+                                pr->sudden.s++;
                                 printf("UP\n");
                                 gotoxy(3,2);
-                                printf("value : %d\n",pr.sudden.s);
+                                printf("value : %d\n",pr->sudden.s);
                             }
 
                             else if(ch == 66)
                             {
-                                pr.sudden.s--;
+                                pr->sudden.s--;
                                 printf("DOWN\n");
                                 gotoxy(3,2);
-                                printf("value : %d\n",pr.sudden.s);
+                                printf("value : %d\n",pr->sudden.s);
                             }
                         }
 
@@ -513,23 +513,23 @@ void func(struct param pr)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("V : %d\n",pr.sudden.v);
+                            printf("V : %d\n",pr->sudden.v);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.sudden.v++;
+                                pr->sudden.v++;
                                 printf("UP\n");
                                 gotoxy(3,2);
-                                printf("value : %d\n",pr.sudden.v);
+                                printf("value : %d\n",pr->sudden.v);
                             }
 
                             else if(ch == 66)
                             {
-                                pr.sudden.v--;
+                                pr->sudden.v--;
                                 printf("DOWN\n");
                                 gotoxy(3,2);
-                                printf("value : %d\n",pr.sudden.v);
+                                printf("value : %d\n",pr->sudden.v);
                             }
                         }
 
@@ -554,7 +554,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("traffic_red_H : %d\n",pr.traffic.red.h);
+                                        printf("traffic_red_H : %d\n",pr->traffic.red.h);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -566,18 +566,18 @@ void func(struct param pr)
                                         
                                         else if(ch == 65)
                                         {
-                                            pr.traffic.red.h++;
+                                            pr->traffic.red.h++;
                                             printf("UP\n");
                                             gotoxy(3,2);
-                                            printf("traffic_red_H : %d\n",pr.traffic.red.h);
+                                            printf("traffic_red_H : %d\n",pr->traffic.red.h);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.traffic.red.h--;
+                                            pr->traffic.red.h--;
                                             printf("DOWN\n");
                                             gotoxy(3,2);
-                                            printf("traffic_red_H : %d\n",pr.traffic.red.h);
+                                            printf("traffic_red_H : %d\n",pr->traffic.red.h);
                                         }
                                     }
                                 }
@@ -590,7 +590,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("traffic_red_S : %d\n",pr.traffic.red.s);
+                                        printf("traffic_red_S : %d\n",pr->traffic.red.s);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -602,18 +602,18 @@ void func(struct param pr)
                                         
                                         else if(ch == 65)
                                         {
-                                            pr.traffic.red.s++;
+                                            pr->traffic.red.s++;
                                             printf("UP\n");
                                             gotoxy(3,2);
-                                            printf("traffic_red_S : %d\n",pr.traffic.red.s);
+                                            printf("traffic_red_S : %d\n",pr->traffic.red.s);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.traffic.red.s--;
+                                            pr->traffic.red.s--;
                                             printf("DOWN\n");
                                             gotoxy(3,2);
-                                            printf("traffic_red_S : %d\n",pr.traffic.red.s);
+                                            printf("traffic_red_S : %d\n",pr->traffic.red.s);
                                         }
                                     }
                                 }
@@ -626,7 +626,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("traffic_red_V : %d\n",pr.traffic.red.v);
+                                        printf("traffic_red_V : %d\n",pr->traffic.red.v);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -638,18 +638,18 @@ void func(struct param pr)
                                         
                                         else if(ch == 65)
                                         {
-                                            pr.traffic.red.v++;
+                                            pr->traffic.red.v++;
                                             printf("UP\n");
                                             gotoxy(3,2);
-                                            printf("traffic_red_V : %d\n",pr.traffic.red.v);
+                                            printf("traffic_red_V : %d\n",pr->traffic.red.v);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.traffic.red.v--;
+                                            pr->traffic.red.v--;
                                             printf("DOWN\n");
                                             gotoxy(3,2);
-                                            printf("traffic_red_V : %d\n",pr.traffic.red.v);
+                                            printf("traffic_red_V : %d\n",pr->traffic.red.v);
                                         }
                                     }
                                 }
@@ -676,7 +676,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("traffic_yellow_H : %d\n",pr.traffic.yellow.h);
+                                        printf("traffic_yellow_H : %d\n",pr->traffic.yellow.h);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -688,18 +688,18 @@ void func(struct param pr)
                                         
                                         else if(ch == 65)
                                         {
-                                            pr.traffic.yellow.h++;
+                                            pr->traffic.yellow.h++;
                                             printf("UP\n");
                                             gotoxy(3,2);
-                                            printf("traffic_yellow_H : %d\n",pr.traffic.yellow.h);
+                                            printf("traffic_yellow_H : %d\n",pr->traffic.yellow.h);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.traffic.yellow.h--;
+                                            pr->traffic.yellow.h--;
                                             printf("DOWN\n");
                                             gotoxy(3,2);
-                                            printf("traffic_yellow_H : %d\n",pr.traffic.yellow.h);
+                                            printf("traffic_yellow_H : %d\n",pr->traffic.yellow.h);
                                         }
                                     }
                                 }
@@ -712,7 +712,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("traffic_yellow_S : %d\n",pr.traffic.yellow.s);
+                                        printf("traffic_yellow_S : %d\n",pr->traffic.yellow.s);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -724,18 +724,18 @@ void func(struct param pr)
                                         
                                         else if(ch == 65)
                                         {
-                                            pr.traffic.yellow.s++;
+                                            pr->traffic.yellow.s++;
                                             printf("UP\n");
                                             gotoxy(3,2);
-                                            printf("traffic_yellow_S : %d\n",pr.traffic.yellow.s);
+                                            printf("traffic_yellow_S : %d\n",pr->traffic.yellow.s);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.traffic.yellow.s--;
+                                            pr->traffic.yellow.s--;
                                             printf("DOWN\n");
                                             gotoxy(3,2);
-                                            printf("traffic_yellow_S : %d\n",pr.traffic.yellow.s);
+                                            printf("traffic_yellow_S : %d\n",pr->traffic.yellow.s);
                                         }
                                     }
                                 }
@@ -748,7 +748,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("traffic_yellow_V : %d\n",pr.traffic.yellow.v);
+                                        printf("traffic_yellow_V : %d\n",pr->traffic.yellow.v);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -760,18 +760,18 @@ void func(struct param pr)
                                         
                                         else if(ch == 65)
                                         {
-                                            pr.traffic.yellow.v++;
+                                            pr->traffic.yellow.v++;
                                             printf("UP\n");
                                             gotoxy(3,2);
-                                            printf("traffic_yellow_V : %d\n",pr.traffic.yellow.v);
+                                            printf("traffic_yellow_V : %d\n",pr->traffic.yellow.v);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.traffic.yellow.v--;
+                                            pr->traffic.yellow.v--;
                                             printf("DOWN\n");
                                             gotoxy(3,2);
-                                            printf("traffic_yellow_V : %d\n",pr.traffic.yellow.v);
+                                            printf("traffic_yellow_V : %d\n",pr->traffic.yellow.v);
                                         }
                                     }
                                 }
@@ -798,7 +798,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("traffic_green_H : %d\n",pr.traffic.green.h);
+                                        printf("traffic_green_H : %d\n",pr->traffic.green.h);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -810,18 +810,18 @@ void func(struct param pr)
                                         
                                         else if(ch == 65)
                                         {
-                                            pr.traffic.green.h++;
+                                            pr->traffic.green.h++;
                                             printf("UP\n");
                                             gotoxy(3,2);
-                                            printf("traffic_green_H : %d\n",pr.traffic.green.h);
+                                            printf("traffic_green_H : %d\n",pr->traffic.green.h);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.traffic.green.h--;
+                                            pr->traffic.green.h--;
                                             printf("DOWN\n");
                                             gotoxy(3,2);
-                                            printf("traffic_green_H : %d\n",pr.traffic.green.h);
+                                            printf("traffic_green_H : %d\n",pr->traffic.green.h);
                                         }
                                     }
                                 }
@@ -834,7 +834,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("traffic_green_S : %d\n",pr.traffic.green.s);
+                                        printf("traffic_green_S : %d\n",pr->traffic.green.s);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -846,18 +846,18 @@ void func(struct param pr)
                                         
                                         else if(ch == 65)
                                         {
-                                            pr.traffic.green.s++;
+                                            pr->traffic.green.s++;
                                             printf("UP\n");
                                             gotoxy(3,2);
-                                            printf("traffic_green_S : %d\n",pr.traffic.green.s);
+                                            printf("traffic_green_S : %d\n",pr->traffic.green.s);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.traffic.green.s--;
+                                            pr->traffic.green.s--;
                                             printf("DOWN\n");
                                             gotoxy(3,2);
-                                            printf("traffic_green_S : %d\n",pr.traffic.green.s);
+                                            printf("traffic_green_S : %d\n",pr->traffic.green.s);
                                         }
                                     }
                                 }
@@ -870,7 +870,7 @@ void func(struct param pr)
                                         gotoxy(3,0);
                                         printf("UP / DOWN\n");
                                         gotoxy(3,2);
-                                        printf("traffic_green_V : %d\n",pr.traffic.green.v);
+                                        printf("traffic_green_V : %d\n",pr->traffic.green.v);
                                         gotoxy(3,3);
 
                                         ch = getch();
@@ -882,18 +882,18 @@ void func(struct param pr)
                                         
                                         else if(ch == 65)
                                         {
-                                            pr.traffic.green.v++;
+                                            pr->traffic.green.v++;
                                             printf("UP\n");
                                             gotoxy(3,2);
-                                            printf("traffic_green_V : %d\n",pr.traffic.green.v);
+                                            printf("traffic_green_V : %d\n",pr->traffic.green.v);
                                         }
 
                                         else if(ch == 66)
                                         {
-                                            pr.traffic.green.v--;
+                                            pr->traffic.green.v--;
                                             printf("DOWN\n");
                                             gotoxy(3,2);
-                                            printf("traffic_green_V : %d\n",pr.traffic.green.v);
+                                            printf("traffic_green_V : %d\n",pr->traffic.green.v);
                                         }
                                     }
                                 }
@@ -905,23 +905,23 @@ void func(struct param pr)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("camera_sevo_X : %d\n",pr.camera.x);
+                            printf("camera_sevo_X : %d\n",pr->camera.x);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.camera.x++;
+                                pr->camera.x++;
                                 printf("UP\n");
                                 gotoxy(3,2);
-                                printf("camera_sevo_X : %d\n",pr.camera.x);
+                                printf("camera_sevo_X : %d\n",pr->camera.x);
                             }
 
                             else if(ch == 66)
                             {
-                                pr.camera.x--;
+                                pr->camera.x--;
                                 printf("DOWN\n");
                                 gotoxy(3,2);
-                                printf("camera_sevo_X : %d\n",pr.camera.x);
+                                printf("camera_sevo_X : %d\n",pr->camera.x);
                             }
                         }
 
@@ -931,23 +931,23 @@ void func(struct param pr)
                             gotoxy(3,0);
                             printf("UP / DOWN\n");
                             gotoxy(3,2);
-                            printf("camera_servo_Y : %d\n",pr.camera.y);
+                            printf("camera_servo_Y : %d\n",pr->camera.y);
                             gotoxy(3,3);
 
                             if(ch == 65)
                             {
-                                pr.camera.y++;
+                                pr->camera.y++;
                                 printf("UP\n");
                                 gotoxy(3,2);
-                                printf("camera_servo_Y : %d\n",pr.camera.y);
+                                printf("camera_servo_Y : %d\n",pr->camera.y);
                             }
 
                             else if(ch == 66)
                             {
-                                pr.camera.y--;
+                                pr->camera.y--;
                                 printf("DOWN\n");
                                 gotoxy(3,2);
-                                printf("camera_servo_Y : %d\n",pr.camera.y);
+                                printf("camera_servo_Y : %d\n",pr->camera.y);
                             }
                         }
 
