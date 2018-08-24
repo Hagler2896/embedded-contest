@@ -8,6 +8,10 @@
 #include <sys/ioctl.h> 
 #include <sys/types.h> 
 
+int ch,ch1;  
+int path1,path2,path3;
+
+
 // ---------------------------------------- parameter 구조체 정의 -------------------------
 struct point1
 {
@@ -99,6 +103,9 @@ void gotoxy(int x, int y) {
 
 }
 
+void func(struct param pr);
+
+
 int getch(void)  
 {  
   int ch;  
@@ -118,10 +125,15 @@ int getch(void)
   
 int main(void)  
 {  
-    int ch,ch1;  
-    int path1,path2,path3;
     struct param pr = {{{ {10,20}, {11,22} } , {30} },{40,50,60}, { {70,80,90} , {10,20,30}, {1,2,3} }, {8,9} };
-    while(1){  
+    func(pr);
+    return 0;  
+}  
+
+
+void func(struct param pr)
+{
+        while(1){  
         system("clear");
         gotoxy(3,0);
         printf("1. line_tracking");
@@ -961,7 +973,5 @@ int main(void)
                     }
             }
     }
-  
-    return 0;  
-}  
 
+}
